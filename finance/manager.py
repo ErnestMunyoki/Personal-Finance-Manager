@@ -37,28 +37,31 @@ class FinanceManager:
                 print("Invalid choice. Try again.")
 
     def add_transaction(self):
-        print("\n--- Add Transaction ---")
-        try:
-            amount = float(input("Enter amount: "))
-            category = input("Enter category (e.g., Food, Transport, Salary): ")
-            date = input("Enter date (YYYY-MM-DD): ")
-            description = input("Enter description: ")
-            t_type = input("Enter type (income/expense): ").lower()
+    print("\n--- Add Transaction ---")
 
-            if t_type not in ["income", "expense"]:
-                print("Invalid type. Must be 'income' or 'expense'.")
-                return
+    amount_input = input("Enter amount: ").strip()
+    if not amount_input.replace(".", "", 1).isdigit():
+        print("Invalid input. Amount must be a number.")
+        return
 
-            new_transaction = Transaction(amount, category, date, description, t_type)
+    amount = float(amount_input)
+    category = input("Enter category (e.g., Food, Transport, Salary): ").strip()
+    date = input("Enter date (YYYY-MM-DD): ").strip()
+    description = input("Enter description: ").strip()
+    t_type = input("Enter type (income/expense): ").lower().strip()
 
-            transactions = load_data()
-            transactions.append(new_transaction.__dict__)
-            save_data(transactions)
+    if t_type not in ["income", "expense"]:
+        print("Invalid type. Must be 'income' or 'expense'.")
+        return
 
-            print("Transaction added successfully!")
+    new_transaction = Transaction(amount, category, date, description, t_type)
 
-        except ValueError:
-            print("Invalid input. Amount must be a number.")
+    transactions = load_data()
+    transactions.append(new_transaction.__dict__)
+    save_data(transactions)
+
+    print("Transaction added successfully!")
+
 
     def view_transactions(self):
         print("\n--- View Transactions ---")
