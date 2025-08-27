@@ -22,7 +22,7 @@ class FinanceManager:
 
         amount = float(amount_input)
         category = input("Enter category (e.g., Food, Transport, Salary): ").strip()
-        date = input("Enter date (YYYY-MM-DD): ").strip()
+        date = input("Enter date (DD-MM-YYYY): ").strip()
         description = input("Enter description: ").strip()
         t_type = input("Enter type (income/expense): ").lower().strip()
 
