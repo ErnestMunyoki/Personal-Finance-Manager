@@ -1,12 +1,11 @@
 from finance.manager import FinanceManager
-from utilities.security import Security
 
 def main():
-    print ("=== Personal Finance Manager ===")
-
-    security = Security()
-    if not security.login():
-        print("Access Denied. Exiting...")
+    print("=== Personal Finance Manager ===")
+    print("\n--- Security Login ---")
+    password = input("Enter password: ")
+    if password != "1234":   
+        print("Access Denied!")
         return
 
     manager = FinanceManager()
@@ -21,7 +20,7 @@ def main():
         print("6. Backup & Restore")
         print("7. Exit")
 
-        choice = input("Enter choice (1-7):").strip()
+        choice = input("Enter choice (1-7): ")
 
         if choice == "1":
             manager.add_transaction()
@@ -34,9 +33,9 @@ def main():
         elif choice == "5":
             manager.search_transactions()
         elif choice == "6":
-            manager.backup_restore()
+            manager.backup_and_restore()  
         elif choice == "7":
-            print("Exiting... Goodbye!")
+            print("Goodbye!")
             break
         else:
             print("Invalid choice! Please try again.")

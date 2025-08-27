@@ -4,11 +4,12 @@ from finance.budget import Budget
 from finance.recurring import RecurringTransaction
 from finance.file_handler import load_data, save_data, backup_data, restore_data
 
+
 class FinanceManager:
     def __init__(self):
         self.transactions = load_data("data/transactions.json")
-        self.budget = Budget(2000) 
-        self.report = Report(self.transactions)
+        self.budget = Budget(2000)
+        self.report = None  
 
     def add_transaction(self):
         print("\n--- Add Transaction ---")
@@ -29,15 +30,22 @@ class FinanceManager:
             print("No transactions found.")
         else:
             for t in self.transactions:
-                print(f"{t['date']} | {t['category']} | {t['amount']} | {t['type']} | {t['description']}")
+                print(
+                    f"{t['date']} | {t['category']} | {t['amount']} | {t['type']} | {t['description']}"
+                )
 
     def generate_reports(self):
-        print("\n--- Reports & Summaries ---")
-        self.report = Report(self.transactions)  
+        self.report = Report(self.transactions)
         summary = self.report.generate_summary()
+
+        print("\n--- Reports & Summaries ---")
         print(f"Total Income: {summary['income']}")
         print(f"Total Expenses: {summary['expenses']}")
         print(f"Balance: {summary['balance']}")
+
+        print("\n--- Category Breakdown ---")
+        for cat, total in self.report.category_report().items():
+            print(f"{cat}: {total}")
 
     def manage_budget(self):
         print("\n--- Manage Budget ---")
@@ -45,18 +53,27 @@ class FinanceManager:
         self.budget.set_limit(new_limit)
         print(f"Budget updated to {new_limit}")
 
-        total_expenses = sum(t["amount"] for t in self.transactions if t["type"] == "expense")
+        total_expenses = sum(
+            t["amount"] for t in self.transactions if t["type"] == "expense"
+        )
         status = self.budget.check_status(total_expenses)
         print(f"Budget Status: {status}")
 
     def search_transactions(self):
         print("\n--- Search Transactions ---")
         keyword = input("Enter keyword (category/description): ").lower()
-        results = [t for t in self.transactions if keyword in t["category"].lower() or keyword in t["description"].lower()]
+        results = [
+            t
+            for t in self.transactions
+            if keyword in t["category"].lower()
+            or keyword in t["description"].lower()
+        ]
 
         if results:
             for t in results:
-                print(f"{t['date']} | {t['category']} | {t['amount']} | {t['type']} | {t['description']}")
+                print(
+                    f"{t['date']} | {t['category']} | {t['amount']} | {t['type']} | {t['description']}"
+                )
         else:
             print("No matching transactions found.")
 
@@ -68,7 +85,9 @@ class FinanceManager:
             print("Backup completed successfully.")
         elif choice == "r":
             restore_data()
+            self.transactions = load_data("data/transactions.json")
             print("Data restored successfully.")
         else:
             print("Invalid choice.")
+
 
