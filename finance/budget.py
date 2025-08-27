@@ -1,31 +1,13 @@
-import json
-import os
-
-BUDGET_FILE = "data/budget.json"
 
 class Budget:
-    def __init__(self):
-        self.monthly_limit = self.load_budget()
+    def __init__(self, limit=0):
+        self.limit = limit
 
-    def load_budget(self):
-        if os.path.exists(BUDGET_FILE):
-            with open(BUDGET_FILE, "r") as f:
-                return json.load(f).get("monthly_limit", 0)
-        return 0
+    def set_limit(self, new_limit):
+        self.limit = new_limit
 
-    def save_budget(self):
-        with open(BUDGET_FILE, "w") as f:
-            json.dump({"monthly_limit": self.monthly_limit}, f)
-
-    def set_budget(self, amount):
-        self.monthly_limit = amount
-        self.save_budget()
-        print(f"Budget set to {amount}")
-
-    def check_budget(self, transactions):
-        expenses = sum(t["amount"] for t in transactions if t["type"] == "expense")
-        print(f"Spent {expenses} / {self.monthly_limit}")
-        if expenses > self.monthly_limit:
-            print("Budget exceeded!")
+    def check_status(self, total_expenses):
+        if total_expenses > self.limit:
+            return f"Over budget by {total_expenses - self.limit}"
         else:
-            print("Within budget")
+            return f"Within budget. Remaining: {self.limit - total_expenses}"
