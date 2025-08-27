@@ -19,5 +19,12 @@
         "date": "2025-06-24",
         "description": "Groceries",
         "type": "expense"
+    },
+    {
+        "amount": 6000.0,
+        "category": "Transport",
+        "date": "2025-06-24",
+        "description": "Fuel cost",
+        "type": "expense"
     }
 ]

@@ -67,10 +67,13 @@ Backup & Restore
 Exit
 
 🎥 Project Demo
-
 📌 Watch the demo & walkthrough here:
 
-👉 Video Demo Link
+https://www.loom.com/share/bdbc9365b2d945beaccaf6e69280c6bc?sid=29019881-c09b-4114-a7bd-56d7fd2b4481
+
+👉 Video Demo Link : 
+
+https://www.loom.com/share/bdbc9365b2d945beaccaf6e69280c6bc?sid=29019881-c09b-4114-a7bd-56d7fd2b4481
 
 Powerpoint Presentation:
 
