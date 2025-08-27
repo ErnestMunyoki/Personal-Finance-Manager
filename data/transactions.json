@@ -1,0 +1,9 @@
+[
+    {
+        "amount": 500.0,
+        "category": "Food ",
+        "date": "2025-06-26",
+        "description": "Groceries",
+        "type": "expense"
+    }
+]
