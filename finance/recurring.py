@@ -1,13 +1,16 @@
 class RecurringTransaction:
-     def__init__(self, amount, category, description, frequency="monthly", t_type="expense"):
-        """
-        frequency: daily, weekly, monthly, yearly
-        """
+    def __init__(self, amount, category, description, frequency="monthly", t_type="expense"):
         self.amount = amount
         self.category = category
         self.description = description
-        self.frequency = frequency
+        self.frequency = frequency  
         self.type = t_type
-    
-    def __str__(self):
-        return f"[Recurring] {self.frequency} | {self.type.upper()} | {self.category} | {self.amount} | {self.description}
+
+    def to_dict(self):
+        return {
+            "amount": self.amount,
+            "category": self.category,
+            "description": self.description,
+            "frequency": self.frequency,
+            "type": self.type,
+        }
