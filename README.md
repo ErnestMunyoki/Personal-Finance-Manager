@@ -72,15 +72,9 @@ Exit
 
 👉 Video Demo Link
 
-📈 Future Improvements
+Powerpoint Presentation:
 
-Add a GUI version for better usability.
-
-Implement recurring transactions automation.
-
-Add export to Excel/CSV feature.
-
-Provide data visualization (charts & graphs).
+https://1drv.ms/p/s!AppY69H-cfyphT3YwViXZ14w047S?e=Bn14ei
 
 👨‍💻 Author
 
