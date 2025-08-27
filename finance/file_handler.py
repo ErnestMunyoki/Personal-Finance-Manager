@@ -1,41 +1,40 @@
 import json
 import os
+import shutil
 
-DATA_FILE = "data/transactions.json"
-BUDGET_FILE = "data/budget.json"
-RECURRING_FILE = "data/recurring.json"
-BACKUP_FILE = "data/transactions_backup.json"
-
-
-def load_data():
-    if not os.path.exists(DATA_FILE):
-        return []
-    with open(DATA_FILE, "r") as f:
-        try:
+def load_data(filepath="data/transactions.json"):
+    """Load transaction data from JSON file."""
+    if not os.path.exists(filepath):
+        return []  
+    try:
+        with open(filepath, "r") as f:
             return json.load(f)
-        except json.JSONDecodeError:
-            return []
+    except json.JSONDecodeError:
+        return []  
 
+def save_data(filepath="data/transactions.json", data=None):
+    """Save transaction data to JSON file."""
+    if data is None:
+        data = []
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    with open(filepath, "w") as f:
+        json.dump(data, f, indent=4)
 
-def save_data(transactions):
-    with open(DATA_FILE, "w") as f:
-        json.dump(transactions, f, indent=4)
-
-
-def backup_data():
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r") as original, open(BACKUP_FILE, "w") as backup:
-            backup.write(original.read())
-        print("Backup created successfully.")
+def backup_data(src="data/transactions.json", dest="backup/transactions_backup.json"):
+    """Backup transaction data file."""
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    if os.path.exists(src):
+        shutil.copy(src, dest)
+        print("Backup successful.")
     else:
-        print("No data to backup.")
+        print("No data file found to backup.")
 
-
-def restore_data():
-    if os.path.exists(BACKUP_FILE):
-        with open(BACKUP_FILE, "r") as backup, open(DATA_FILE, "w") as original:
-            original.write(backup.read())
-        print("Data restored from backup.")
+def restore_data(src="backup/transactions_backup.json", dest="data/transactions.json"):
+    """Restore transaction data from backup file."""
+    if os.path.exists(src):
+        shutil.copy(src, dest)
+        print("Restore successful.")
     else:
-        print("No backup found.")
+        print("No backup file found to restore.")
+
 
