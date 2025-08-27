@@ -1,7 +1,7 @@
 class FinanceManager:
     def __init__(self):
         self.transaction = []
-        price("Finance Manager initialized.")
+        print("Finance Manager initialized.")
 
     def add_transaction(self):
         print("[TODO] Add a new transaction.")
