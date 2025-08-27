@@ -67,10 +67,13 @@ Backup & Restore
 Exit
 
 🎥 Project Demo
+
 📌 Watch the demo & walkthrough here:
+
 👉 Video Demo Link
 
 📈 Future Improvements
+
 Add a GUI version for better usability.
 
 Implement recurring transactions automation.
@@ -80,6 +83,13 @@ Add export to Excel/CSV feature.
 Provide data visualization (charts & graphs).
 
 👨‍💻 Author
+
 Ernest Munyoki
-📧 Email: ernestmunyoki@gmail.com
-🔗 GitHub: ErnestMunyoki
+
+📧 Email:
+
+ ernestmunyoki@gmail.com
+
+🔗 GitHub:
+
+ ErnestMunyoki
