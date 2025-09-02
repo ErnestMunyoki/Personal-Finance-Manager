@@ -71,6 +71,10 @@ Exit
 
 https://www.loom.com/share/bdbc9365b2d945beaccaf6e69280c6bc?sid=29019881-c09b-4114-a7bd-56d7fd2b4481
 
+*updated project demo:
+
+https://www.loom.com/share/737747c1d2764a18bfd398c96e6aa213?sid=81e3e287-0ddc-4cf6-a469-dccbe413dd66
+
 👉 Video Demo Link : 
 
 https://www.loom.com/share/bdbc9365b2d945beaccaf6e69280c6bc?sid=29019881-c09b-4114-a7bd-56d7fd2b4481
