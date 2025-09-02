@@ -1,4 +1,3 @@
-
 class Budget:
     def __init__(self, limit=0):
         self.limit = limit

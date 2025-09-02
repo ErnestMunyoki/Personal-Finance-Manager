@@ -2,9 +2,8 @@ from finance.manager import FinanceManager
 
 def main():
     print("=== Personal Finance Manager ===")
-    print("\n--- Security Login ---")
     password = input("Enter password: ")
-    if password != "1234":   
+    if password != "1234":
         print("Access Denied!")
         return
 
@@ -33,7 +32,7 @@ def main():
         elif choice == "5":
             manager.search_transactions()
         elif choice == "6":
-            manager.backup_and_restore()  
+            manager.backup_and_restore()
         elif choice == "7":
             print("Goodbye!")
             break
@@ -42,5 +41,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-        
